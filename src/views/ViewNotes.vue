@@ -26,31 +26,18 @@
       </div>
     </div>
 
-    <div v-for="note in notes" :key="note.id" class="card mb-3">
-      <header class="is-hidden card-header">
-        <p class="card-header-title">Nota {{ note.id }}</p>
-        <button class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </header>
-      <div class="card-content">
-        <div class="content">
-          {{ note.content }}
-        </div>
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
-      </footer>
-    </div>
+    <NoteCard v-for="note in notes" :key="note.id" :note="note" />
   </div>
 </template>
 
 <script setup>
+/*
+    imports
+*/
 import { ref } from 'vue'
 import uuid4 from 'uuid4'
+
+import NoteCard from '@/components/Notes/NoteCard.vue'
 
 const newNote = ref(null)
 const newNoteRef = ref(null)
